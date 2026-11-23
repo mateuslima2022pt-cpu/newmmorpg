@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#222c24">
+  <title>Perfect 2.5D · Prado da Vigília</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main id="game" aria-label="Perfect 2.5D">
+    <canvas id="world" aria-label="Campo 3D. Clique no chão para mover."></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <div id="world-ui" aria-hidden="true"></div>
+
+    <header class="left-top">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><i></i></span>
+        <div><div class="brand-name">PERFECT <span>2.5D</span></div><div class="brand-region">TERRAS HUMANAS</div></div>
+      </div>
+      <button class="player-panel panel" id="profile" type="button" aria-label="Abrir ficha do personagem">
+        <span class="avatar" aria-hidden="true">♜</span>
+        <span class="player-readout">
+          <span class="player-heading"><strong id="player-name">Andarilho</strong><span>Nv. <b id="player-level">1</b></span></span>
+          <span class="meter health"><span id="hp-fill"></span><b id="hp-text">100 / 100</b></span>
+          <span class="meter energy"><span id="energy-fill"></span><b id="energy-text">100</b></span>
+        </span>
+      </button>
+      <div id="target-panel" class="target panel" hidden>
+        <span id="target-title"></span><span class="meter enemy"><span id="target-fill"></span><b id="target-hp"></b></span>
+      </div>
+    </header>
+
+    <aside class="right-top" aria-label="Região e missão">
+      <button id="map-button" class="map-panel panel" type="button" title="Abrir mapa (M)">
+        <div class="map-heading"><span title="Terras Humanas">✧</span><strong>Prado da Vigília</strong><kbd>M</kbd></div>
+        <canvas id="minimap" width="240" height="122" aria-label="Minimapa do Prado da Vigília"></canvas>
+        <div class="map-footer"><span>Cidadela da Bigorna</span><span id="mode" class="mode">SOLO</span></div>
+      </button>
+      <div class="quest panel">
+        <span class="quest-glyph" aria-hidden="true">◇</span>
+        <div>
+          <div class="quest-kicker">MISSÃO ATUAL</div>
+          <strong>Patrulha do portão</strong>
+          <ul id="quest-steps"><li>Fale com a Capitã Bruna.</li></ul>
+          <button id="guide" type="button">Ir até Bruna <span aria-hidden="true">›</span></button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="lower-left">
+      <div class="location"><span aria-hidden="true">⌖</span> <span id="location-name">Estrada da Cidadela</span></div>
+      <div id="chat-box" class="chat panel" hidden>
+        <div id="chat-log" aria-live="polite"></div>
+        <form id="chat-form"><label class="sr" for="chat-input">Mensagem</label><input id="chat-input" maxlength="140" autocomplete="off" placeholder="Mensagem no campo…"><button type="submit">Enviar</button></form>
+      </div>
+      <div class="controls">
+        <button id="help-button" type="button" title="Controles"><kbd>?</kbd> Controles</button>
+        <button id="chat-button" type="button" title="Chat local" hidden><kbd>↵</kbd> Chat</button>
+      </div>
+    </div>
+
+    <div class="lower-center">
+      <div id="toast" role="status" aria-live="polite"></div>
+      <button id="interact" class="interact panel" type="button" hidden><kbd>E</kbd> Falar com Bruna</button>
+      <div class="skills" id="skills" aria-label="Habilidades"></div>
+      <div class="xp"><div id="xp-fill"></div></div>
+    </div>
+
+    <nav class="lower-right" aria-label="Menus">
+      <button class="menu-button panel" id="bestiary-button" type="button" title="Bestiário (B)" aria-label="Bestiário"><span>▤</span><kbd>B</kbd></button>
+      <button class="menu-button panel" id="bag-button" type="button" title="Inventário (I)" aria-label="Inventário"><span>◆</span><kbd>I</kbd></button>
+    </nav>
+
+    <dialog id="dialog" class="dialog panel">
+      <div class="dialog-top"><span id="dialog-kicker"></span><button id="close-dialog" type="button" aria-label="Fechar">×</button></div>
+      <h1 id="dialog-title"></h1>
+      <div id="dialog-body"></div>
+      <div id="dialog-actions" class="dialog-actions"></div>
+    </dialog>
+    <section id="failure" class="failure panel" hidden><h1>Perfect 2.5D</h1><p id="failure-detail">A renderização 3D está indisponível neste navegador.</p><button id="retry" type="button">Tentar novamente</button></section>
+  </main>
+  <script type="module" src="./client.js"></script>
+</body>
+</html>

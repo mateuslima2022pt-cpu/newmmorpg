@@ -1,0 +1,14 @@
+{
+  "name": "perfect-2-5d",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "desktop": "electron ."
+  },
+  "devDependencies": {
+    "electron": "42.5.2"
+  }
+}
